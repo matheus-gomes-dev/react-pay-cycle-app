@@ -8,6 +8,12 @@ import Content from '../common/template/content'
 import ValueBox from '../common/widget/valueBox'
 
 class Dashboard extends Component {
+	
+	//método chamado sempre que elemento for renderizado
+	componentWillMount() {
+        this.props.getSummary()
+    }
+
 	render() {
 		const {credit, debt} = this.props.summary //armazenando valores de estado através do redux
 		return (
