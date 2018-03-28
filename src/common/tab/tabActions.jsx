@@ -5,3 +5,12 @@ export function selectTab(tabId) {
 		payload: tabId
 	}
 }
+
+export function showTabs(...tabIds){
+	const tabsToShow = {}
+	tabIds.map(e => tabsToShow[e] = true)
+	return {
+		type: 'TAB_SHOWED',
+		payload: tabsToShow
+	}
+}
