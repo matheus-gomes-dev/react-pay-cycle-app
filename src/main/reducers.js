@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form' 
+//dentro de redux há um elemento reducer, que estou renomeando para formReducer
 
 import DashboardReducer from '../dashboard/dashboardReducer'
 import TabReducer from '../common/tab/tabReducer'
