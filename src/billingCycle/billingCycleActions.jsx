@@ -35,6 +35,13 @@ export function create(values){
 	}
 }
 
+export function showUpdate(billingCycle) {
+    return [ 
+        showTabs('tabUpdate'),
+        selectTab('tabUpdate')
+    ]
+}
+
 /*
 export function getList2() {
     const request = axios.get(`${BASE_URL}/billingCycles`)
