@@ -9,7 +9,6 @@ class BillingCycleForm extends Component {
 
 	render() {
         const { handleSubmit } = this.props
-        console.log(handleSubmit)
         return (
             <form role='form' onSubmit={handleSubmit}>
                 <div className='box-body'>
@@ -19,7 +18,7 @@ class BillingCycleForm extends Component {
                 </div>
                 <div className='box-footer'>
                     <button type='submit' className='btn btn-primary'>Submit</button>
-                    <button type='button' className='btn btn-default' onClick={this.props.init}>Cancel</button>
+                    <button type='button' className='btn btn-default'>Cancel</button>
                 </div>
             </form>
         )

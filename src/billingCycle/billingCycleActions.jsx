@@ -6,6 +6,28 @@ import { showTabs, selectTab } from '../common/tab/tabActions'
 const BASE_URL = 'http://localhost:3003/api'
 const INITIAL_VALUES = {credits: [{}], debts: [{}]}
 
+
+//função para ser executada no ato de submit dos forms
+function submit(values, method) {
+	//É esperado que action creators retornem sempre ações (https://redux.js.org/basics/actions)
+	//notar que o retorno não é nada mais do que uma função com callback, retornando várias ações.
+	//Notação é um pouco diferente dos demais action creators, mas ver que getList() poderia ser
+	//substituido por getList2() (comentado abaixo) e daria na mesma
+    return dispatch => {
+        const id = values._id ? values._id : ''
+        axios[method](`${BASE_URL}/billingCycles/${id}`, values)
+            .then(resp => {
+                toastr.success('Sucesso', 'Operação Realizada com sucesso.')
+                //posso retornar um array de actions somente porque o middleware redux-multi foi incluído
+                dispatch(init())
+            })
+            .catch(e => {
+                e.response.data.errors.map(error => toastr.error('Erro', error))
+            })
+    }
+}
+
+
 export function getList() {
     const request = axios.get(`${BASE_URL}/billingCycles`)
     return {
@@ -15,21 +37,12 @@ export function getList() {
 }
 
 export function create(values){
-	//É esperado que action creators retornem sempre ações (https://redux.js.org/basics/actions)
-	//notar que o retorno não é nada mais do que uma função com callback, retornando várias ações.
-	//Notação é um pouco diferente dos demais action creators, mas ver que getList() poderia ser
-	//substituido por getList2() (comentado abaixo) e daria na mesma
-	return actions => {
-		axios.post(`${BASE_URL}/billingCycles`, values)
-			.then(resp => {
-				toastr.success('Sucesso', 'Operação realizada com sucesso!')
-				//posso retornar um array de actions somente porque o middleware redux-multi foi incluído
-				actions(init())
-			})
-			.catch(e => {
-				e.response.data.errors.map(error => toastr.error('Erro', error))
-			})
-	}
+	return submit(values, 'post')
+}
+
+
+export function update(values) {
+    return submit(values, 'put')
 }
 
 export function showUpdate(billingCycle) {
