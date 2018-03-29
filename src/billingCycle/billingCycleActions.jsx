@@ -2,7 +2,9 @@ import axios from 'axios'
 import { toastr } from 'react-redux-toastr'
 import {reset as resetForm, initialize } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
+
 const BASE_URL = 'http://localhost:3003/api'
+const INITIAL_VALUES = {credits: [{}], debts: [{}]}
 
 export function getList() {
     const request = axios.get(`${BASE_URL}/billingCycles`)
@@ -22,12 +24,7 @@ export function create(values){
 			.then(resp => {
 				toastr.success('Sucesso', 'Operação realizada com sucesso!')
 				//posso retornar um array de actions somente porque o middleware redux-multi foi incluído
-				actions([
-					resetForm('billingCycleForm'),
-					getList(),
-					selectTab('tabList'),
-					showTabs('tabList', 'tabCreate')
-				])
+				actions(init())
 			})
 			.catch(e => {
 				e.response.data.errors.map(error => toastr.error('Erro', error))
@@ -40,6 +37,15 @@ export function showUpdate(billingCycle) {
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
         initialize('billingCycleForm', billingCycle) //inicializa form com valores pre-definidos para os campos
+    ]
+}
+
+export function init() {
+    return [
+        showTabs('tabList', 'tabCreate'),
+        selectTab('tabList'),
+        getList(),
+        initialize('billingCycleForm', INITIAL_VALUES)
     ]
 }
 
