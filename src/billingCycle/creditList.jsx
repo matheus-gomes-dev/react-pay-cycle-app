@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Grid from '../common/layout/grid'
 import { Field } from 'redux-form'
+import Input from '../common/form/input'
 
 
 class CreditList extends Component {
@@ -11,8 +12,20 @@ class CreditList extends Component {
 		//em billingCycleList.jsx
 		return(
 			<tr>
-				<td><Field name='credits[0].name' component='input'/></td>
-				<td><Field name='credits[0].value' component='input'/></td>
+				<td>
+					<Field name='credits[0].name' 
+						component={Input} 
+						placeholder='Name' 
+						readOnly={this.props.readOnly}
+					/>
+				</td>
+				<td>
+					<Field name='credits[0].value'
+						component={Input} 
+						placeholder='Value' 
+						readOnly={this.props.readOnly}
+					/>
+				</td>
 			</tr>
 		)
 	}
