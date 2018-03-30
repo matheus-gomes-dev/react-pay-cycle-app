@@ -50,6 +50,7 @@ export function remove(values) {
 }
 
 export function showUpdate(billingCycle) {
+    console.log(billingCycle)
     return [ 
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
