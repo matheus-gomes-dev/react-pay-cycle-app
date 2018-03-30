@@ -10,24 +10,25 @@ class CreditList extends Component {
 		//notar que o atributo name de Field está sendo linkado pelo initialize com os valores
 		//recebidos da API em billingCycleActions no instante do clique do botão de editar 
 		//em billingCycleList.jsx
-		return(
-			<tr>
+		const list = this.props.list || []
+		return list.map((item, index) => (
+			<tr key={index}>
 				<td>
-					<Field name='credits[0].name' 
+					<Field name={`credits[${index}].name`} 
 						component={Input} 
 						placeholder='Name' 
 						readOnly={this.props.readOnly}
 					/>
 				</td>
 				<td>
-					<Field name='credits[0].value'
+					<Field name={`credits[${index}].value`}
 						component={Input} 
 						placeholder='Value' 
 						readOnly={this.props.readOnly}
 					/>
 				</td>
 			</tr>
-		)
+		))
 	}
 
 	render() {
