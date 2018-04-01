@@ -11,7 +11,7 @@ class BillingCycleForm extends Component {
 
 	render() {
         //handleSubmit fica disponível após redux-form
-        const { handleSubmit, readOnly } = this.props
+        const { handleSubmit, readOnly, credits, debts } = this.props
         console.log(this.props)
         return (
             <form role='form' onSubmit={handleSubmit}>
@@ -19,7 +19,8 @@ class BillingCycleForm extends Component {
                     <Field name='name' component={labelAndInput} label='Name' cols='12 4' placeholder='Inform name' readOnly={readOnly}/>
                     <Field name='month' component={labelAndInput} label='Month' cols='12 4' placeholder='Inform month' type='number' readOnly={readOnly}/>
                     <Field name='year' component={labelAndInput} label='Year' cols='12 4' placeholder='Inform year' type='number' readOnly={readOnly}/>
-                    <ItemList cols='12 6' list={this.props.credits} readOnly={readOnly} field='credits' legend='Credits'/>
+                    <ItemList cols='12 6' list={credits} readOnly={readOnly} field='credits' legend='Credits'/>
+                    <ItemList cols='12 6' list={debts} readOnly={readOnly} field='debts' legend='Debts' showStatus={true}/>
                 </div>
                 <div className='box-footer'>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}>{this.props.submitLabel}</button>
@@ -38,6 +39,6 @@ class BillingCycleForm extends Component {
 BillingCycleForm = reduxForm({form: 'billingCycleForm', destroyOnUnmount: false})(BillingCycleForm)
 const selector = formValueSelector('billingCycleForm');
 
-const mapStateToProps = state => ({credits: selector(state, 'credits')}) //extraindo atributo credit do redux-form
+const mapStateToProps = state => ({credits: selector(state, 'credits'), debts: selector(state, 'debts')}) //extraindo atributo credit do redux-form
 const mapDispatchToProps = dispatch => bindActionCreators({init}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm)
