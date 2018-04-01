@@ -6,6 +6,7 @@ import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { init } from './billingCycleActions'
 import labelAndInput from '../common/form/labelAndInput'
 import ItemList from './itemList'
+import Summary from './summary'
 
 class BillingCycleForm extends Component {
 
@@ -19,6 +20,7 @@ class BillingCycleForm extends Component {
                     <Field name='name' component={labelAndInput} label='Name' cols='12 4' placeholder='Inform name' readOnly={readOnly}/>
                     <Field name='month' component={labelAndInput} label='Month' cols='12 4' placeholder='Inform month' type='number' readOnly={readOnly}/>
                     <Field name='year' component={labelAndInput} label='Year' cols='12 4' placeholder='Inform year' type='number' readOnly={readOnly}/>
+                    <Summary credit={1000} debt={100} />
                     <ItemList cols='12 6' list={credits} readOnly={readOnly} field='credits' legend='Credits'/>
                     <ItemList cols='12 6' list={debts} readOnly={readOnly} field='debts' legend='Debts' showStatus={true}/>
                 </div>
