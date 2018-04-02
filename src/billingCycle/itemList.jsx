@@ -74,12 +74,12 @@ class itemList extends Component {
 					<table className='table'>
 						<thead>
 							<tr>
-								<th>Nome</th>
-								<th>Valor</th>
+								<th>Name</th>
+								<th>Value</th>
 								<If test={this.props.showStatus}>
 									<th>Status</th>
 								</If>
-								<th className='table-actions'>Ações</th>
+								<th className='table-actions'>Actions</th>
 							</tr>
 						</thead>
 						<tbody>

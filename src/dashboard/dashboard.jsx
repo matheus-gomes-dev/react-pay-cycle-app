@@ -18,12 +18,12 @@ class Dashboard extends Component {
 		const {credit, debt} = this.props.summary //armazenando valores de estado através do redux
 		return (
 			<div>
-				<ContentHeader title="Dashboard" small="Versão 1.0"/>
+				<ContentHeader title="Dashboard" small="Version 1.0"/>
 				<Content>
 					<div className='row'>
-						<ValueBox cols=' 12 4' color='green' icon='bank' value={`R$ ${credit}`} text='Total de Créditos'/>
-						<ValueBox cols=' 12 4' color='red' icon='credit-card' value={`R$ ${debt}`} text='Total de Débitos'/>
-						<ValueBox cols=' 12 4' color='blue' icon='money' value={`R$ ${credit-debt}`} text='Valor consolidado'/>
+						<ValueBox cols=' 12 4' color='green' icon='bank' value={`R$ ${credit}`} text='Total of Credits'/>
+						<ValueBox cols=' 12 4' color='red' icon='credit-card' value={`R$ ${debt}`} text='Total of Debts'/>
+						<ValueBox cols=' 12 4' color='blue' icon='money' value={`R$ ${credit-debt}`} text='Balance'/>
 					</div>
 				</Content>
 			</div>

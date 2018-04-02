@@ -38,7 +38,7 @@ class Navbar extends Component {
                             <li className="user-footer">
                                 <div className="pull-right">
                                     <a href="#" onClick={this.props.logout}
-                                        className="btn btn-default btn-flat">Sair</a>
+                                        className="btn btn-default btn-flat">Logout</a>
                                 </div>
                             </li>
                         </ul>

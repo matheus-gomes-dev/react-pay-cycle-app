@@ -23,14 +23,14 @@ class BillingCycle extends Component {
 	render() {
 		return (
 			<div>
-				<ContentHeader title='Ciclos de Pagamentos' small='Cadastro' />
+				<ContentHeader title='Billing Cycle'/>
 				<Content>
 					<Tabs>
 						<TabsHeader>
-							<TabHeader label='Listar' icon='bars' target='tabList'/>
-							<TabHeader label='Incluir' icon='plus' target='tabCreate'/>
-							<TabHeader label='Alterar' icon='pencil' target='tabUpdate'/>
-							<TabHeader label='Excluir' icon='trash-o' target='tabDelete'/>
+							<TabHeader label='List' icon='bars' target='tabList'/>
+							<TabHeader label='Add' icon='plus' target='tabCreate'/>
+							<TabHeader label='Edit' icon='pencil' target='tabUpdate'/>
+							<TabHeader label='Delete' icon='trash-o' target='tabDelete'/>
 						</TabsHeader>
 						<TabsContent>
 							<TabContent id='tabList'>

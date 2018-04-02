@@ -17,12 +17,12 @@ function submit(values, method) {
         const id = values._id ? values._id : ''
         axios[method](`${BASE_URL}/billingCycles/${id}`, values)
             .then(resp => {
-                toastr.success('Sucesso', 'Operação Realizada com sucesso.')
+                toastr.success('Sucess', 'Operation completed!')
                 //posso retornar um array de actions somente porque o middleware redux-multi foi incluído
                 dispatch(init())
             })
             .catch(e => {
-                e.response.data.errors.map(error => toastr.error('Erro', error))
+                e.response.data.errors.map(error => toastr.error('Error', error))
             })
     }
 }
